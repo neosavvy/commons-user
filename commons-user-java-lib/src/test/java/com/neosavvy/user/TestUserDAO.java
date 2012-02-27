@@ -1,30 +1,27 @@
 package com.neosavvy.user;
 
-import com.neosavvy.user.dao.UserDAO;
-import com.neosavvy.user.dto.UserDTO;
 import com.neosavvy.user.dto.CompanyDTO;
 import com.neosavvy.user.dto.RoleDTO;
+import com.neosavvy.user.dto.UserDTO;
 import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Assert;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
 public class TestUserDAO extends BaseSpringAwareTestCase {
-	
-	@Test
-	public void testSaveUser() {
+
+    @Test
+    public void testSaveUser() {
         deleteFromTables("USER_ROLE");
         deleteFromTables("USER_COMPANY");
         deleteFromTables("COMPANY");
         deleteFromTables("USER");
         UserDTO user = createTestUser();
-		
-		userDAO.saveUser(user);
-		Assert.assertTrue((int)user.getId() > 0);
-	}
+
+        userDAO.saveUser(user);
+        Assert.assertTrue((int) user.getId() > 0);
+    }
 
     @Test
     public void testDeleteUser() {
@@ -44,7 +41,7 @@ public class TestUserDAO extends BaseSpringAwareTestCase {
         userDAO.deleteUser(user);
 
         numRows = countRowsInTable("USER");
-        Assert.assertEquals(0,numRows);
+        Assert.assertEquals(0, numRows);
     }
 
     @Test
@@ -75,7 +72,7 @@ public class TestUserDAO extends BaseSpringAwareTestCase {
 
         List<UserDTO> usersFound = userDAO.findUsers(searchCriteria);
 
-        assertSearchCriteriaResults(usersFound,1);
+        assertSearchCriteriaResults(usersFound, 1);
 
     }
 
@@ -88,7 +85,7 @@ public class TestUserDAO extends BaseSpringAwareTestCase {
 
         List<UserDTO> usersFounds = userDAO.findUsers(searchCriteria);
 
-        assertSearchCriteriaResults(usersFounds,1);
+        assertSearchCriteriaResults(usersFounds, 1);
     }
 
     @Test
@@ -100,7 +97,7 @@ public class TestUserDAO extends BaseSpringAwareTestCase {
 
         List<UserDTO> usersFounds = userDAO.findUsers(searchCriteria);
 
-        assertSearchCriteriaResults(usersFounds,1);
+        assertSearchCriteriaResults(usersFounds, 1);
     }
 
     @Test
@@ -112,7 +109,7 @@ public class TestUserDAO extends BaseSpringAwareTestCase {
 
         List<UserDTO> usersFounds = userDAO.findUsers(searchCriteria);
 
-        assertSearchCriteriaResults(usersFounds,1);
+        assertSearchCriteriaResults(usersFounds, 1);
     }
 
     @Test
@@ -124,7 +121,7 @@ public class TestUserDAO extends BaseSpringAwareTestCase {
 
         List<UserDTO> usersFounds = userDAO.findUsers(searchCriteria);
 
-        assertSearchCriteriaResults(usersFounds,2);        
+        assertSearchCriteriaResults(usersFounds, 2);
     }
 
     @Test
@@ -135,7 +132,7 @@ public class TestUserDAO extends BaseSpringAwareTestCase {
         deleteFromTables("USER");
         userDAO.saveUser(createTestUser());
         try {
-            Assert.assertEquals("Should be a row in the table for the user",countRowsInTable("USER"),1);
+            Assert.assertEquals("Should be a row in the table for the user", countRowsInTable("USER"), 1);
             userDAO.saveUser(createTestUser());
         } catch (ConstraintViolationException e) {
             return;

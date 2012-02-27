@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:context="http://www.springframework.org/schema/context"
-xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
-http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com.neosavvy.user.rest"/>
@@ -68,23 +67,23 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     </bean>
 
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-      <property name="host" value="localhost"/>
+        <property name="host" value="localhost"/>
     </bean>
 
     <bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
-      <property name="from" value="customerservice@mycompany.com"/>
-      <property name="subject" value="Thanks for registering a user with commons-user"/>
+        <property name="from" value="customerservice@mycompany.com"/>
+        <property name="subject" value="Thanks for registering a user with commons-user"/>
     </bean>
 
     <bean id="viewResolver"
-        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/WEB-INF/" />
-        <property name="suffix" value=".jsp" />
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
 
     <!--<bean id="userRestResource" class="com.neosavvy.user.rest.UserResource">-->
-        <!--<property name="userService" ref="userService"/>-->
+    <!--<property name="userService" ref="userService"/>-->
     <!--</bean>-->
 </beans>

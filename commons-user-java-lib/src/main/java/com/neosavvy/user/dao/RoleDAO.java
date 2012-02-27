@@ -12,13 +12,13 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface RoleDAO {
-	public List<RoleDTO> getRoles();
+    public List<RoleDTO> getRoles();
 
-	public void saveRole(RoleDTO user);
+    public void saveRole(RoleDTO user);
 
-	public RoleDTO findRoleById(int id);
+    public RoleDTO findRoleById(int id);
 
-	public List<RoleDTO> findRoles(RoleDTO role);
-    
+    public List<RoleDTO> findRoles(RoleDTO role);
+
     public void deleteRole(RoleDTO role);
 }

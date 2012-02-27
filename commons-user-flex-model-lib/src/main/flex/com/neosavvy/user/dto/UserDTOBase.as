@@ -7,10 +7,6 @@
 
 package com.neosavvy.user.dto {
 
-    import flash.utils.IDataInput;
-    import flash.utils.IDataOutput;
-    import flash.utils.IExternalizable;
-    import org.granite.collections.IPersistentCollection;
     import org.granite.meta;
 
     use namespace meta;
@@ -29,6 +25,7 @@ package com.neosavvy.user.dto {
         public function set emailAddress(value:String):void {
             _emailAddress = value;
         }
+
         public function get emailAddress():String {
             return _emailAddress;
         }
@@ -36,6 +33,7 @@ package com.neosavvy.user.dto {
         public function set firstName(value:String):void {
             _firstName = value;
         }
+
         public function get firstName():String {
             return _firstName;
         }
@@ -43,6 +41,7 @@ package com.neosavvy.user.dto {
         public function set id(value:int):void {
             _id = value;
         }
+
         public function get id():int {
             return _id;
         }
@@ -50,6 +49,7 @@ package com.neosavvy.user.dto {
         public function set lastName(value:String):void {
             _lastName = value;
         }
+
         public function get lastName():String {
             return _lastName;
         }
@@ -57,6 +57,7 @@ package com.neosavvy.user.dto {
         public function set middleName(value:String):void {
             _middleName = value;
         }
+
         public function get middleName():String {
             return _middleName;
         }
@@ -64,6 +65,7 @@ package com.neosavvy.user.dto {
         public function set password(value:String):void {
             _password = value;
         }
+
         public function get password():String {
             return _password;
         }
@@ -71,9 +73,11 @@ package com.neosavvy.user.dto {
         public function set username(value:String):void {
             _username = value;
         }
+
         public function get username():String {
             return _username;
         }
+
 //
 //        public function readExternal(input:IDataInput):void {
 //            _id = input.readObject() as int;

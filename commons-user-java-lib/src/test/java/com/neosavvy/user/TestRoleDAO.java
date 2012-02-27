@@ -1,13 +1,12 @@
 package com.neosavvy.user;
 
-import org.junit.Test;
-import org.junit.Assert;
-import org.hibernate.exception.ConstraintViolationException;
-
-import java.util.List;
-
 import com.neosavvy.user.dto.RoleDTO;
 import com.neosavvy.user.dto.UserDTO;
+import org.hibernate.exception.ConstraintViolationException;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -16,13 +15,13 @@ import com.neosavvy.user.dto.UserDTO;
  * Time: 4:08:02 AM
  * To change this template use File | Settings | File Templates.
  */
-public class TestRoleDAO extends BaseSpringAwareTestCase{
+public class TestRoleDAO extends BaseSpringAwareTestCase {
 
     private void cleanDatabase() {
         deleteFromTables("USER_ROLE");
         deleteFromTables("USER_COMPANY");
         deleteFromTables("USER");
-        deleteFromTables("ROLE");        
+        deleteFromTables("ROLE");
     }
 
     @Test
@@ -31,7 +30,7 @@ public class TestRoleDAO extends BaseSpringAwareTestCase{
         RoleDTO role = createTestRole();
 
         roleDAO.saveRole(role);
-        Assert.assertTrue((int)role.getId() > 0);
+        Assert.assertTrue((int) role.getId() > 0);
     }
 
     @Test
@@ -49,7 +48,7 @@ public class TestRoleDAO extends BaseSpringAwareTestCase{
         roleDAO.deleteRole(role);
 
         numRows = countRowsInTable("ROLE");
-        Assert.assertEquals(0,numRows);
+        Assert.assertEquals(0, numRows);
     }
 
     @Test
@@ -89,7 +88,7 @@ public class TestRoleDAO extends BaseSpringAwareTestCase{
 
         List<RoleDTO> rolesFound = roleDAO.findRoles(searchCriteria);
 
-        assertSearchCriteriaResults(rolesFound,1);
+        assertSearchCriteriaResults(rolesFound, 1);
     }
 
     @Test
@@ -101,7 +100,7 @@ public class TestRoleDAO extends BaseSpringAwareTestCase{
 
         List<RoleDTO> rolesFounds = roleDAO.findRoles(searchCriteria);
 
-        assertSearchCriteriaResults(rolesFounds,1);
+        assertSearchCriteriaResults(rolesFounds, 1);
         cleanDatabase();
     }
 
@@ -110,7 +109,7 @@ public class TestRoleDAO extends BaseSpringAwareTestCase{
         cleanDatabase();
         roleDAO.saveRole(createTestRole());
         try {
-            Assert.assertEquals("Should be a row in the table for the user",countRowsInTable("ROLE"),1);
+            Assert.assertEquals("Should be a row in the table for the user", countRowsInTable("ROLE"), 1);
             roleDAO.saveRole(createTestRole());
         } catch (ConstraintViolationException e) {
             return;
@@ -155,7 +154,6 @@ public class TestRoleDAO extends BaseSpringAwareTestCase{
         RoleDTO role = createTestRoleWithUser(user);
         role.addUser(altUser);
         roleDAO.saveRole(role);
-
 
 
         int numRows = countRowsInTable("ROLE");

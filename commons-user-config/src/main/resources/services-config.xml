@@ -4,7 +4,7 @@
     <channels>
         <channel-definition id="user-amf" class="mx.messaging.channels.AMFChannel">
             <endpoint url="http://{server.name}:{server.port}/{context.root}/messagebroker/amf"
-                class="flex.messaging.endpoints.AMFEndpoint"/>
+                      class="flex.messaging.endpoints.AMFEndpoint"/>
             <properties>
                 <polling-enabled>false</polling-enabled>
             </properties>
@@ -14,7 +14,7 @@
     <logging>
         <target class="flex.messaging.log.ConsoleTarget" level="Error">
             <properties>
-                <prefix>[BlazeDS] </prefix>
+                <prefix>[BlazeDS]</prefix>
                 <includeDate>true</includeDate>
                 <includeTime>true</includeTime>
                 <includeLevel>false</includeLevel>
@@ -29,9 +29,9 @@
     </logging>
     <logging>
         <target class="flex.messaging.log.ServletLogTarget"
-            level="Error">
+                level="Error">
             <properties>
-                <prefix>[BlazeDS] </prefix>
+                <prefix>[BlazeDS]</prefix>
                 <includeDate>true</includeDate>
                 <includeTime>true</includeTime>
                 <includeLevel>false</includeLevel>

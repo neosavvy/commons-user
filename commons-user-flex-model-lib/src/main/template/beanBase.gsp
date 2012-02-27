@@ -41,57 +41,57 @@
 
 package ${jClass.as3Type.packageName} {
 <%
-///////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////
 // Write Import Statements.
 
-    for (as3Import in as3Imports) {%>
-    import ${as3Import};<%
+    for (as3Import in as3Imports) { %>
+import ${as3Import};<%
     }
 
 ///////////////////////////////////////////////////////////////////////////////
-// Write Class Declaration.%>
+// Write Class Declaration. %>
 
-    [Bindable]
-    public class ${jClass.as3Type.name}Base<%
+[Bindable]
+public class ${jClass.as3Type.name}Base<%
 
-        boolean implementsWritten = false;
-        if (jClass.hasSuperclass()) {
-            %> extends ${jClass.superclass.as3Type.name}<%
+    boolean implementsWritten = false;
+    if (jClass.hasSuperclass()) {
+%> extends ${jClass.superclass.as3Type.name}<%
+    }
+
+    for (jInterface in jClass.interfaces) {
+        if (!implementsWritten) {
+%> implements ${jInterface.as3Type.name}<%
+
+        implementsWritten = true;
+    } else {
+%>, ${jInterface.as3Type.name}<%
         }
+    }
 
-        for (jInterface in jClass.interfaces) {
-            if (!implementsWritten) {
-                %> implements ${jInterface.as3Type.name}<%
-
-                implementsWritten = true;
-            } else {
-                %>, ${jInterface.as3Type.name}<%
-            }
-        }
-
-    %> {
+%> {
 <%
 
     ///////////////////////////////////////////////////////////////////////////
     // Write Private Fields.
 
-    for (jProperty in jClass.properties) {%>
-        private var _${jProperty.name}:${jProperty.as3Type.name};<%
+    for (jProperty in jClass.properties) { %>
+private var _${jProperty.name}:${jProperty.as3Type.name};<%
     }
 
     ///////////////////////////////////////////////////////////////////////////
     // Write Public Getter/Setter.
 
     for (jProperty in jClass.properties) {
-        if (jProperty.readable || jProperty.writable) {%>
+        if (jProperty.readable || jProperty.writable) { %>
 <%
-            if (jProperty.writable) {%>
-        public function set ${jProperty.name}(value:${jProperty.as3Type.name}):void {
+        if (jProperty.writable) { %>
+public function set ${jProperty.name}(value:${jProperty.as3Type.name}):void {
             _${jProperty.name} = value;
         }<%
-            }
-            if (jProperty.readable) {%>
-        public function get ${jProperty.name}():${jProperty.as3Type.name} {
+        }
+        if (jProperty.readable) { %>
+public function get ${jProperty.name}():${jProperty.as3Type.name} {
             return _${jProperty.name};
         }<%
             }
@@ -103,20 +103,20 @@ package ${jClass.as3Type.packageName} {
 
     if (jClass.hasInterfaces()) {
         for (jProperty in jClass.interfacesProperties) {
-            if (jProperty.readable || jProperty.writable) {%>
+            if (jProperty.readable || jProperty.writable) { %>
 <%
-                if (jProperty.writable) {%>
-        public function set ${jProperty.name}(value:${jProperty.as3Type.name}):void {
+        if (jProperty.writable) { %>
+public function set ${jProperty.name}(value:${jProperty.as3Type.name}):void {
         }<%
-                }
-                if (jProperty.readable) {%>
-        public function get ${jProperty.name}():${jProperty.as3Type.name} {
+        }
+        if (jProperty.readable) { %>
+public function get ${jProperty.name}():${jProperty.as3Type.name} {
             return ${jProperty.as3Type.nullValue};
         }<%
                 }
             }
         }
-    }%>
+    } %>
 
-    }
+}
 }

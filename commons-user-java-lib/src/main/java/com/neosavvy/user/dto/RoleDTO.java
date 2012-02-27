@@ -2,8 +2,8 @@ package com.neosavvy.user.dto;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Set;
 import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,28 +15,28 @@ import java.util.LinkedHashSet;
 
 @Entity
 @Table(
-    name="ROLE" ,
-    uniqueConstraints = {
-            @UniqueConstraint(columnNames = {"ROLE_ID"}),
-            @UniqueConstraint(columnNames = {"SHORT_NAME"})
-    }
+        name = "ROLE",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"ROLE_ID"}),
+                @UniqueConstraint(columnNames = {"SHORT_NAME"})
+        }
 )
 @XmlRootElement
 public class RoleDTO {
     @Id
     @GeneratedValue
-	@Column(name="ROLE_ID")
-	private int id;
+    @Column(name = "ROLE_ID")
+    private int id;
 
-	@Column(name="SHORT_NAME")
-	private String shortName;
+    @Column(name = "SHORT_NAME")
+    private String shortName;
 
-	@Column(name="LONG_NAME")
-	private String longName;
+    @Column(name = "LONG_NAME")
+    private String longName;
 
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "USER_ROLE", joinColumns = { @JoinColumn(name = "USER_ID") },
-            inverseJoinColumns = { @JoinColumn(name = "ROLE_ID") })
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "USER_ROLE", joinColumns = {@JoinColumn(name = "USER_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "ROLE_ID")})
     private Set<UserDTO> users = new LinkedHashSet<UserDTO>();
 
     public int getId() {
@@ -71,7 +71,7 @@ public class RoleDTO {
         this.users = users;
     }
 
-    public void addUser(UserDTO user){
+    public void addUser(UserDTO user) {
         if (this.users != null)
             this.users.add(user);
     }

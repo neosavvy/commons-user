@@ -1,13 +1,7 @@
 package com.neosavvy.user.service;
 
-import com.neosavvy.user.dto.UserDTO;
 import com.neosavvy.user.dao.UserDAO;
-
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.List;
-
+import com.neosavvy.user.dto.UserDTO;
 import com.neosavvy.user.service.exception.UserServiceException;
 import com.neosavvy.util.StringUtil;
 import org.apache.log4j.Logger;
@@ -16,6 +10,9 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+
+import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -68,7 +65,7 @@ public class UserServiceImpl implements UserService {
             user.setRegistrationToken(StringUtil.getHash64(user.toString() + System.currentTimeMillis() + ""));
         } catch (UnsupportedEncodingException e) {
             logger.error(e);
-            throw new UserServiceException("Unable to generate token for user: "+ user.toString(),e);
+            throw new UserServiceException("Unable to generate token for user: " + user.toString(), e);
         }
 
         userDao.saveUser(user);
@@ -76,14 +73,13 @@ public class UserServiceImpl implements UserService {
         SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
         msg.setTo(user.getEmailAddress());
         msg.setText("Please click here to activate your account: http://" + hostName + "/commons-user-webapp/users/data/" + user.getUsername() + "/" + user.getRegistrationToken());
-        try{
+        try {
             mailSender.send(msg);
-        }
-        catch(MailException ex) {
+        } catch (MailException ex) {
             logger.error(ex.getMessage());
         }
     }
-    
+
     public UserDTO findUserById(int id) {
         return userDao.findUserById(id);
     }
@@ -99,13 +95,13 @@ public class UserServiceImpl implements UserService {
     public boolean confirmUser(String userName, String hashCode) {
         Assert.notNull(userName);
         Assert.notNull(hashCode);
-                
+
         UserDTO searchUser = new UserDTO();
         searchUser.setUsername(userName);
         List<UserDTO> matchingUsers = findUsers(searchUser);
-        if( matchingUsers != null && matchingUsers.size() == 1) {
+        if (matchingUsers != null && matchingUsers.size() == 1) {
             UserDTO matchingUser = matchingUsers.get(0);
-            if( hashCode.equals(matchingUser.getRegistrationToken()) ){
+            if (hashCode.equals(matchingUser.getRegistrationToken())) {
                 matchingUser.setConfirmedRegistration(true);
                 userDao.saveUser(matchingUser);
                 return true;

@@ -54,8 +54,6 @@
             userConfirmed.visible = false;
             userFailed.visible = true;
         }
-
-
         ]]>
     </mx:Script>
 

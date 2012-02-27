@@ -1,10 +1,10 @@
 <!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-    
-  	<display-name>COMMONS-USER-SERVICE</display-name>
+
+    <display-name>COMMONS-USER-SERVICE</display-name>
 
     <listener>
         <listener-class>flex.messaging.HttpFlexSession</listener-class>
@@ -29,8 +29,8 @@
         <url-pattern>/messagebroker/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-		<servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
-		<url-pattern>/users/*</url-pattern>
-	</servlet-mapping>
-     
+        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+        <url-pattern>/users/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -38,16 +38,16 @@ package ${jClass.as3Type.packageName} {<%
                 as3Imports.add(jProperty.as3Type.qualifiedName);
         }
 
-        if (as3Imports.size() > 0) {%>
+        if (as3Imports.size() > 0) { %>
 <%
         }
-        for (as3Import in as3Imports) {%>
-    import ${as3Import};<%
+        for (as3Import in as3Imports) { %>
+import ${as3Import};<%
         }
-    }%>
+    } %>
 
-    [Bindable]
-    [RemoteClass(alias="${jClass.qualifiedName}")]
+[Bindable]
+[RemoteClass(alias="${jClass.qualifiedName}")]
     public class ${jClass.as3Type.name} extends ${jClass.as3Type.name}Base {<%
 
     ///////////////////////////////////////////////////////////////////////////
@@ -55,21 +55,21 @@ package ${jClass.as3Type.packageName} {<%
 
     if (jClass.hasInterfaces()) {
         for (jProperty in jClass.interfacesProperties) {
-            if (jProperty.readable || jProperty.writable) {%>
+            if (jProperty.readable || jProperty.writable) { %>
 <%
-                if (jProperty.writable) {%>
-        override public function set ${jProperty.name}(value:${jProperty.as3Type.name}):void {
+        if (jProperty.writable) { %>
+override public function set ${jProperty.name}(value:${jProperty.as3Type.name}):void {
             // TODO: Gas3 empty generated setter.
         }<%
-                }
-                if (jProperty.readable) {%>
-        override public function get ${jProperty.name}():${jProperty.as3Type.name} {
+        }
+        if (jProperty.readable) { %>
+override public function get ${jProperty.name}():${jProperty.as3Type.name} {
             // TODO: Gas3 default generated getter.
             return ${jProperty.as3Type.nullValue};
         }<%
                 }
             }
         }
-    }%>
-    }
+    } %>
+}
 }

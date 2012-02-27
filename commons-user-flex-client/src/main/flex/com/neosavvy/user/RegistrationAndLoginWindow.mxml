@@ -12,7 +12,6 @@
         <![CDATA[
         import com.neosavvy.user.registration.event.RegistrationFailedEvent;
 
-        import mx.core.FlexGlobals;
         import mx.events.CloseEvent;
         import mx.managers.PopUpManager;
 
@@ -55,8 +54,6 @@
             userConfirmed.visible = false;
             userFailed.visible = true;
         }
-
-
         ]]>
     </mx:Script>
 

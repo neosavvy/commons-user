@@ -43,12 +43,12 @@ public class UserResource {
     public ModelAndView confirmUser(@PathParam("userName") String userName, @PathParam("hashCode") String hashCode) {
         boolean confirmed = userService.confirmUser(userName, hashCode);
         String returnValue;
-        if(confirmed) {
+        if (confirmed) {
             returnValue = "Thanks for confirming your membership please visit http://localhost:8080/commons-user-webapp/ to login";
         } else {
             returnValue = "There was a problem confirming your membership please request a new registration token";
         }
-        return new ModelAndView("registrationConfirmation","confirmationMessage", returnValue);
+        return new ModelAndView("registrationConfirmation", "confirmationMessage", returnValue);
     }
 
 }

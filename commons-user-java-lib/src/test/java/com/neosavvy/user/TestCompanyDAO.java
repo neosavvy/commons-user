@@ -1,16 +1,11 @@
 package com.neosavvy.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.junit.Test;
-import org.junit.Assert;
-import org.hibernate.exception.ConstraintViolationException;
-
-import java.util.List;
-
-import com.neosavvy.user.dao.CompanyDAO;
-import com.neosavvy.user.dao.UserDAO;
 import com.neosavvy.user.dto.CompanyDTO;
 import com.neosavvy.user.dto.UserDTO;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,8 +14,8 @@ import com.neosavvy.user.dto.UserDTO;
  * Time: 3:23:00 PM
  * To change this template use File | Settings | File Templates.
  */
-public class TestCompanyDAO extends BaseSpringAwareTestCase{
-    
+public class TestCompanyDAO extends BaseSpringAwareTestCase {
+
     @Test
     public void testFindCompanyById() {
         deleteFromTables("COMPANY");
@@ -61,7 +56,7 @@ public class TestCompanyDAO extends BaseSpringAwareTestCase{
 
         List<CompanyDTO> companiesFound = companyDAO.findCompanies(searchCriteria);
 
-        assertSearchCriteriaResults(companiesFound,1);
+        assertSearchCriteriaResults(companiesFound, 1);
 
     }
 
@@ -74,7 +69,7 @@ public class TestCompanyDAO extends BaseSpringAwareTestCase{
 
         List<CompanyDTO> companiesFound = companyDAO.findCompanies(searchCriteria);
 
-        assertSearchCriteriaResults(companiesFound,1);
+        assertSearchCriteriaResults(companiesFound, 1);
     }
 
     @Test
@@ -86,7 +81,7 @@ public class TestCompanyDAO extends BaseSpringAwareTestCase{
 
         List<CompanyDTO> companiesFound = companyDAO.findCompanies(searchCriteria);
 
-        assertSearchCriteriaResults(companiesFound,1);
+        assertSearchCriteriaResults(companiesFound, 1);
     }
 
     @Test
@@ -98,7 +93,7 @@ public class TestCompanyDAO extends BaseSpringAwareTestCase{
 
         List<CompanyDTO> companiesFound = companyDAO.findCompanies(searchCriteria);
 
-        assertSearchCriteriaResults(companiesFound,1);
+        assertSearchCriteriaResults(companiesFound, 1);
     }
 
     @Test
@@ -110,7 +105,7 @@ public class TestCompanyDAO extends BaseSpringAwareTestCase{
 
         List<CompanyDTO> companiesFound = companyDAO.findCompanies(searchCriteria);
 
-        assertSearchCriteriaResults(companiesFound,0);
+        assertSearchCriteriaResults(companiesFound, 0);
     }
 
     protected CompanyDTO createTestCompanyWithUser(UserDTO user) {
@@ -124,7 +119,7 @@ public class TestCompanyDAO extends BaseSpringAwareTestCase{
         company.setCountry("Canada");
         company.addUser(user);
         return company;
-    }    
+    }
 
     @Test
     public void testFindCompanyWithUser() {

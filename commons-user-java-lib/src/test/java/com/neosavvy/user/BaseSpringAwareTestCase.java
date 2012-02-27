@@ -1,31 +1,30 @@
 package com.neosavvy.user;
 
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.junit.Assert;
-import com.neosavvy.user.dto.UserDTO;
+import com.neosavvy.user.dao.CompanyDAO;
+import com.neosavvy.user.dao.RoleDAO;
+import com.neosavvy.user.dao.UserDAO;
 import com.neosavvy.user.dto.CompanyDTO;
 import com.neosavvy.user.dto.RoleDTO;
-import com.neosavvy.user.dao.CompanyDAO;
-import com.neosavvy.user.dao.UserDAO;
-import com.neosavvy.user.dao.RoleDAO;
+import com.neosavvy.user.dto.UserDTO;
+import org.junit.Assert;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
 import java.util.List;
 
 @ContextConfiguration(locations = {
-		"classpath:applicationContext.xml"
-        })
+        "classpath:applicationContext.xml"
+})
 public abstract class BaseSpringAwareTestCase extends AbstractTransactionalJUnit4SpringContextTests {
     @Autowired
-	protected CompanyDAO companyDAO;
+    protected CompanyDAO companyDAO;
     @Autowired
     protected UserDAO userDAO;
     @Autowired
-    protected RoleDAO roleDAO;       
+    protected RoleDAO roleDAO;
 
-    protected UserDTO createTestUser(){
+    protected UserDTO createTestUser() {
         UserDTO user = new UserDTO();
         user.setFirstName("William");
         user.setMiddleName("Adam");
@@ -36,7 +35,7 @@ public abstract class BaseSpringAwareTestCase extends AbstractTransactionalJUnit
         return user;
     }
 
-    protected UserDTO createAltTestUser(){
+    protected UserDTO createAltTestUser() {
         UserDTO user = new UserDTO();
         user.setFirstName("Lance");
         user.setMiddleName("B");
@@ -85,9 +84,9 @@ public abstract class BaseSpringAwareTestCase extends AbstractTransactionalJUnit
         return role;
     }
 
-    protected void assertSearchCriteriaResults(List itemsFound,int numRows) {
+    protected void assertSearchCriteriaResults(List itemsFound, int numRows) {
         Assert.assertNotNull("Search results were null", itemsFound);
-        Assert.assertEquals("Size of returned results should have been " + numRows, numRows,itemsFound.size());
+        Assert.assertEquals("Size of returned results should have been " + numRows, numRows, itemsFound.size());
     }
 
 }

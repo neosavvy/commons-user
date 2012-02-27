@@ -12,12 +12,12 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface CompanyDAO {
-	public List<CompanyDTO> getCompanies();
+    public List<CompanyDTO> getCompanies();
 
-	public void saveCompany(CompanyDTO user);
+    public void saveCompany(CompanyDTO user);
 
-	public CompanyDTO findCompanyById(int id);
+    public CompanyDTO findCompanyById(int id);
 
-	public List<CompanyDTO> findCompanies(CompanyDTO company);
-    
+    public List<CompanyDTO> findCompanies(CompanyDTO company);
+
 }

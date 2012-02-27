@@ -1,10 +1,9 @@
 package com.neosavvy.user.dto;
 
 
-
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.ws.rs.FormParam;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -17,44 +16,44 @@ import java.util.Set;
  */
 @Entity
 @Table(
-    name="COMPANY" ,
-    uniqueConstraints = {
-            @UniqueConstraint(columnNames = {"COMPANY_ID"})
-    }
+        name = "COMPANY",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"COMPANY_ID"})
+        }
 )
 @XmlRootElement
 public class CompanyDTO {
 
     @Id
     @GeneratedValue
-    @Column(name="COMPANY_ID")
+    @Column(name = "COMPANY_ID")
     private int id;
 
-    @Column(name="COMPANY_NAME")
+    @Column(name = "COMPANY_NAME")
 
     private String companyName;
 
-    @Column(name="ADDRESS_ONE")
+    @Column(name = "ADDRESS_ONE")
     private String addressOne;
 
-    @Column(name="ADDRESS_TWO")
+    @Column(name = "ADDRESS_TWO")
     private String addressTwo;
 
-    @Column(name="CITY")
+    @Column(name = "CITY")
     private String city;
 
-    @Column(name="POSTAL_CODE")
+    @Column(name = "POSTAL_CODE")
     private String postalCode;
 
-    @Column(name="STATE")
+    @Column(name = "STATE")
     private String state;
 
-    @Column(name="COUNTRY")
+    @Column(name = "COUNTRY")
     private String country;
 
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "USER_COMPANY", joinColumns = { @JoinColumn(name = "USER_ID") },
-            inverseJoinColumns = { @JoinColumn(name = "COMPANY_ID") })
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "USER_COMPANY", joinColumns = {@JoinColumn(name = "USER_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID")})
     private Set<UserDTO> users = new LinkedHashSet<UserDTO>();
 
 
@@ -139,16 +138,16 @@ public class CompanyDTO {
         this.country = country;
     }
 
-	public Set<UserDTO> getUsers() {
-		return users;
-	}
+    public Set<UserDTO> getUsers() {
+        return users;
+    }
 
-	public void setUsers(Set<UserDTO> users) {
-		this.users = users;
-	}
+    public void setUsers(Set<UserDTO> users) {
+        this.users = users;
+    }
 
-    public void addUser(UserDTO user){
+    public void addUser(UserDTO user) {
         if (this.users != null)
-            this.users.add(user);   
+            this.users.add(user);
     }
 }
