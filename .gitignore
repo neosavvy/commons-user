@@ -1,0 +1,12 @@
+.idea/
+commons-user-config/commons-user-config.iml
+commons-user-config/target/
+commons-user-flex-client/commons-user-flex-client.iml
+commons-user-flex-client/target/
+commons-user-flex-model-lib/commons-user-flex-model-lib.iml
+commons-user-flex-model-lib/target/
+commons-user-java-lib/commons-user-java-lib.iml
+commons-user-java-lib/target/
+commons-user-webapp/commons-user-webapp.iml
+commons-user-webapp/target/
+maven-flex-webapp-commons-user-toplevel.iml
