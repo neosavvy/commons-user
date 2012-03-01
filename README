@@ -1,0 +1,18 @@
+Mac Setup
+- Make sure that you have postfix running.
+- I had to make sure to follow the steps below to make Lion work with Postfix to send the mail out:
+Adam-Parrishs-MacBook-Pro:~ waparrish$ sudo touch /etc/postfix/submit.cred
+Adam-Parrishs-MacBook-Pro:~ waparrish$ sudo chmod 777 /etc/postfix/submit.cred
+Adam-Parrishs-MacBook-Pro:~ waparrish$ sudo echo "submitcred version 1" >> /etc/postfix/submit.cred
+Adam-Parrishs-MacBook-Pro:~ waparrish$ sudo echo "localhost|waparrish|test" >> /etc/postfix/submit.cred
+Adam-Parrishs-MacBook-Pro:~ waparrish$ sudo chmod 600 /etc/postfix/submit.cred
+Adam-Parrishs-MacBook-Pro:~ waparrish$ sudo postfix restart
+
+Compilation:
+- mvn clean install should build the whole application
+
+Running:
+cd to commons-user-webapp
+mvn cargo:start
+
+Access: http://localhost:8080/commons-user-webapp/
