@@ -154,11 +154,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.j2ee</groupId>
-            <artifactId>j2ee</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>com.sun.jmx</groupId>
             <artifactId>jmxri</artifactId>
             <version>1.2.1</version>

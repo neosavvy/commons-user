@@ -1,7 +1,7 @@
 package com.neosavvy.user.service;
 
 import com.neosavvy.user.dto.UserDTO;
-import org.springframework.security.annotation.Secured;
+import org.springframework.security.access.annotation.Secured;
 
 import java.util.List;
 
