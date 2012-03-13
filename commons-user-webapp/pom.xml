@@ -64,17 +64,28 @@
                     <execution>
                         <id>unpack-config</id>
                         <goals>
-                            <goal>unpack-dependencies</goal>
+                            <goal>unpack</goal>
                         </goals>
                         <phase>generate-resources</phase>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/flex
-                            </outputDirectory>
-                            <includeArtifacIds>commons-user-config</includeArtifacIds>
-                            <includeGroupIds>${project.groupId}</includeGroupIds>
-                            <includeClassifiers>resources</includeClassifiers>
-                            <excludeTransitive>true</excludeTransitive>
-                            <excludeTypes>jar,swf</excludeTypes>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>commons-user-config</artifactId>
+                                    <classifier>resources</classifier>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/flex</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>commons-user-js-client</artifactId>
+                                    <classifier>resources</classifier>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/${project.build.finalName}/</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
                         </configuration>
                     </execution>
                 </executions>
@@ -155,6 +166,14 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>commons-user-config</artifactId>
+            <version>${project.parent.version}</version>
+            <classifier>resources</classifier>
+            <type>zip</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>commons-user-js-client</artifactId>
             <version>${project.parent.version}</version>
             <classifier>resources</classifier>
             <type>zip</type>
