@@ -45,11 +45,11 @@
                         <containerId>${cargo.container.id}</containerId>
                         <zipUrlInstaller>
                             <url>${cargo.download.url}</url>
-                            <extractDir>${cargo.install.dir}</extractDir>
+                            <extractDir>${basedir}/target/tomcatInstall</extractDir>
                         </zipUrlInstaller>
                     </container>
                     <configuration>
-                        <home>${basedir}/target/${cargo.container.id}/home</home>
+                        <home>${basedir}/target/tomcatInstall/apache-tomcat-6.0.35/apache-tomcat-6.0.35/home</home>
                         <properties>
                             <cargo.jvmargs>
                                 <![CDATA[-Xdebug -Xrunjdwp:transport=dt_socket,address=4001,server=y,suspend=n]]></cargo.jvmargs>
