@@ -6,16 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Controller
-@Path(UserResource.USER_RESOURCE_URL)
-public class UserResource {
+@Path(UserResourceImpl.USER_RESOURCE_URL)
+public class UserResourceImpl {
 
     public static final String USER_RESOURCE_URL = "/users";
 
@@ -32,9 +29,34 @@ public class UserResource {
 
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    @Path("data")
+    @Path("users")
     public List<UserDTO> getUsers() {
         return userService.getUsers();
+    }
+
+    @POST
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Path("users")
+    public void saveUser(UserDTO user) {
+        userService.saveUser(user);
+    }
+
+    @GET
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Path("users/{id}")
+    public UserDTO findUserById(@PathParam("id") int id) {
+        return userService.findUserById(id);
+    }
+
+    public List<UserDTO> findUsers(UserDTO user) {
+        return userService.findUsers(user);
+    }
+
+    @DELETE
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Path("users")
+    public void deleteUser(UserDTO user) {
+        userService.deleteUser(user);
     }
 
     @GET

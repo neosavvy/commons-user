@@ -65,7 +65,7 @@
         <property name="userDao" ref="userDAO"/>
         <property name="templateMessage" ref="templateMessage"/>
         <property name="mailSender" ref="mailSender"/>
-        <property name="hostName" value="www.neosavvy.com:8080"/>
+        <property name="hostName" value="localhost:8080"/>
     </bean>
 
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
